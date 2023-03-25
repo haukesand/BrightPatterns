@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 	<title>Bright Patterns</title>
+    <meta name="description" content="A collection of bright patterns in user interface design.">
+   
 	<style>
 		body {
 			font-family: Arial, sans-serif;
@@ -55,8 +58,8 @@
 		.author {
 		font-size: 14px;
 		color: #999;
-		text-align: right;
-		margin-top: 50px;
+		text-align: center;
+		margin-top: 10px;
 		}
 		.toggle-arrow {
 			cursor: pointer;
@@ -67,11 +70,11 @@
 			transform-origin: center;
 			transition: transform 0.3s;
 		}
+
 		.additional-info {
+		display: none;
 		opacity: 0;
-		max-height: 0;
-		overflow: hidden;
-		transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out;
+		transition: opacity 0.5s;
 		}
 
 		.additional-info-open {
@@ -109,18 +112,61 @@
 			height: auto;
 		}
 
+		.footer {
+		background-color: #f4f4f4;
+		padding: 20px;
+		text-align: center;
+		border-top: 1px solid #ccc;
+		margin-top: 50px;
+		}
+
+		.footer h2 {
+			font-size: 20px;
+			margin-bottom: 10px;
+			margin-top: 0;
+		}
+
+		.footer h5 {
+			font-size: 16px;
+			margin-bottom: 5px;
+			margin-top: 0;
+			cursor: pointer;
+		}
+
+		.footer pre {
+			margin: 0;
+			font-family: monospace;
+			white-space: pre-wrap;
+		}
+
+		
+		h3 > span, h5 > span {
+		cursor: pointer;
+		}
+
+
+
 	</style>
 	<script>
-		function toggleInfo(infoId, arrow) {
-		var infoElement = document.getElementById(infoId);
-		if (infoElement.classList.contains('additional-info-open')) {
-			infoElement.classList.remove('additional-info-open');
-			arrow.innerHTML = "&#x25BC;";
-		} else {
-			infoElement.classList.add('additional-info-open');
-			arrow.innerHTML = "&#x25B2;";
-		}
-	}
+	function toggleInfo(id, elem) {
+    var info = document.getElementById(id);
+    var arrow = elem.querySelector('.toggle-arrow');
+    
+    if (info.style.display === "block") {
+        info.style.display = "none";
+        info.style.opacity = 0;
+        arrow.style.transform = "rotate(0deg)";
+    } else {
+        info.style.display = "block";
+        setTimeout(function() {
+            info.style.opacity = 1;
+        }, 50);
+        arrow.style.transform = "rotate(180deg)";
+    }
+}
+
+
+
 
 	</script>
 </head>
@@ -138,8 +184,11 @@
 		<h2>Examples</h2>
 
 		<div class="pattern">
-			<h3>Slow down
-                <span class="toggle-arrow" onclick="toggleInfo('slow-down-info', this)">&#x25BC;</span></h3>
+			<h3>
+				<span onclick="toggleInfo('slow-down-info', this)">Slow down
+					<span class="toggle-arrow">&#x25BC;</span>
+				</span>
+			</h3>
 				<p>This pattern involves friction in interaction by adding extra steps or barriers to prevent users from engaging in harmful or addictive behaviors. For example, a social media app may require users to confirm their intention before posting a potentially toxic comment, or an app intentionally takes longer to open up.</p>
 			<div class="additional-info" id="slow-down-info">
 				
@@ -155,9 +204,34 @@
 
 		<!-- Add the remaining patterns with the same structure as above -->
 
-		<section id="author">
-			<p class="author">By Hauke Sandhaus, Cornell University, NYC ©️2023</p>
-		</section>
+	
+		<footer class="footer">
+			<!-- <h2>About</h2> -->
+			<section id="author">
+				<p class="author">By Hauke Sandhaus, Cornell University, NYC ©️2023</p>
+			</section>
+			<h5>
+				<span onclick="toggleInfo('citation-info', this)">Citation
+					<span class="toggle-arrow">&#x25BC;</span>
+				</span>
+			</h5>
+			
+		
+			<div class="additional-info" id="citation-info">
+				<pre>
+@MISC{brightpatterns2023,
+title={Bright Patterns},
+author={Sandhaus, Hauke},
+year={2023},
+institution={Cornell University},
+address={Brooklyn, New York City},
+url={https://www.brightpatterns.org}
+}
+				</pre>
+			</div>
 
+		</footer>
+		
+		
 </body>
 </html>
