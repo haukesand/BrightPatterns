@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bright Patterns</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+
+		header {
+			background-color: #f4f4f4;
+			padding: 20px;
+			text-align: center;
+		}
+
+		h1 {
+			margin: 0;
+		}
+
+		a:link {
+		color: black;
+		background-color: yellow;
+		text-decoration: none;
+		}
+		.container {
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 20px;
+		}
+
+		.pattern {
+			margin-bottom: 20px;
+			padding: 20px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+		}
+
+		.pattern h2 {
+			margin-top: 0;
+			margin-bottom: 10px;
+		}
+
+		.pattern p {
+			margin-top: 0;
+		}
+
+		.footer {
+			margin-top: 50px;
+			text-align: center;
+			font-size: 14px;
+			color: #888;
+		}
+		.author {
+		font-size: 14px;
+		color: #999;
+		text-align: right;
+		margin-top: 50px;
+		}
+		.toggle-arrow {
+			cursor: pointer;
+			display: inline-block;
+			margin-left: 5px;
+			font-size: 0.8em;
+			user-select: none;
+			transform-origin: center;
+			transition: transform 0.3s;
+		}
+		.additional-info {
+		opacity: 0;
+		max-height: 0;
+		overflow: hidden;
+		transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out;
+		}
+
+		.additional-info-open {
+			opacity: 1;
+			max-height: 1000px; /* Adjust this value based on the maximum expected height of your additional info content */
+		}
+
+		.chip {
+			display: inline-block;
+			padding: 0 12px;
+			height: 32px;
+			line-height: 32px;
+			border-radius: 16px;
+			background-color: #f1f1f1;
+			margin: 0 5px 5px 0;
+			user-select: none;
+			vertical-align: middle;
+			white-space: nowrap;
+		}
+		.chip img {
+			width: 16px;
+			height: 16px;
+			vertical-align: middle;
+			border-radius: 50%;
+			margin-right: 5px;
+		}
+
+		.chip a:link {
+		color: black;
+		background-color: transparent;
+		text-decoration: none;
+		}
+		.pattern img {
+			max-width: 100%;
+			height: auto;
+		}
+
+	</style>
+	<script>
+		function toggleInfo(infoId, arrow) {
+		var infoElement = document.getElementById(infoId);
+		if (infoElement.classList.contains('additional-info-open')) {
+			infoElement.classList.remove('additional-info-open');
+			arrow.innerHTML = "&#x25BC;";
+		} else {
+			infoElement.classList.add('additional-info-open');
+			arrow.innerHTML = "&#x25B2;";
+		}
+	}
+
+	</script>
+</head>
+<body>
+	<header>
+		<h1>Bright Patterns</h1>
+	</header>
+	<div class="container">
+		<h2>Definition</h2>
+		<p>Bright patterns are aspirational design solutions that prioritize ethical considerations over established design conventions. They are design solutions that prioritize user goals and well-being over their desires and business objectives.</p>
+		
+		<h2>Collection of Bright Patterns</h2>
+		<p>While bright patterns are not commonly found, we have discovered a few instances of these rare designs in the wild. If you have encountered any bright pattern that is not covered by the examples below, please submit it using this form: <a href="https://forms.gle/9ULA8FjcoN5km4EF6">Submit a Bright Pattern</a>.</p>
+		
+		<h2>Examples</h2>
+
+		<div class="pattern">
+			<h3>Slow down
+                <span class="toggle-arrow" onclick="toggleInfo('slow-down-info', this)">&#x25BC;</span></h3>
+				<p>This pattern involves friction in interaction by adding extra steps or barriers to prevent users from engaging in harmful or addictive behaviors. For example, a social media app may require users to confirm their intention before posting a potentially toxic comment, or an app intentionally takes longer to open up.</p>
+			<div class="additional-info" id="slow-down-info">
+				
+				<img src="img\MJ_ImagePrompt_Jelly.jpg" alt="Bright pattern example">
+				<div class="chip">
+					<img src="https://s2.googleusercontent.com/s2/favicons?domain=www.facebook.com" alt="Facebook"><a href="url">Facebook</a>
+				</div>
+				<div class="chip">
+					<img src="https://s2.googleusercontent.com/s2/favicons?domain=www.tiktok.com" alt="TikTok">TikTok
+				</div>
+			</div>
+		</div>
+
+		<!-- Add the remaining patterns with the same structure as above -->
+
+		<section id="author">
+			<p class="author">By Hauke Sandhaus, Cornell University, NYC ©️2023</p>
+		</section>
+
+</body>
+</html>
