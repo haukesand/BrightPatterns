@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 	<title>Bright Patterns</title>
+    <meta name="description" content="Bright patterns are aspirational design solutions that prioritize user goals and well-being over their desires and business objectives. — A collection of bright patterns in user interface design.">
+   
 	<style>
 		body {
 			font-family: Arial, sans-serif;
@@ -19,6 +22,11 @@
 			margin: 0;
 		}
 
+		a:link {
+		color: black;
+		background-color: yellow;
+		text-decoration: none;
+		}
 		.container {
 			max-width: 800px;
 			margin: 0 auto;
@@ -50,10 +58,117 @@
 		.author {
 		font-size: 14px;
 		color: #999;
-		text-align: right;
+		text-align: center;
+		margin-top: 10px;
+		}
+		.toggle-arrow {
+			cursor: pointer;
+			display: inline-block;
+			margin-left: 5px;
+			font-size: 0.8em;
+			user-select: none;
+			transform-origin: center;
+			transition: transform 0.3s;
+		}
+
+		.additional-info {
+		display: none;
+		opacity: 0;
+		transition: opacity 0.5s;
+		}
+
+		.additional-info-open {
+			opacity: 1;
+			max-height: 1000px; /* Adjust this value based on the maximum expected height of your additional info content */
+		}
+
+		.chip {
+			display: inline-block;
+			padding: 0 12px;
+			height: 32px;
+			line-height: 32px;
+			border-radius: 16px;
+			background-color: #f1f1f1;
+			margin: 0 5px 5px 0;
+			user-select: none;
+			vertical-align: middle;
+			white-space: nowrap;
+		}
+		.chip img {
+			width: 16px;
+			height: 16px;
+			vertical-align: middle;
+			border-radius: 50%;
+			margin-right: 5px;
+		}
+
+		.chip a:link {
+		color: black;
+		background-color: transparent;
+		text-decoration: none;
+		}
+		.pattern img {
+			max-width: 100%;
+			height: auto;
+		}
+
+		.footer {
+		background-color: #f4f4f4;
+		padding: 20px;
+		text-align: center;
+		border-top: 1px solid #ccc;
 		margin-top: 50px;
 		}
+
+		.footer h2 {
+			font-size: 20px;
+			margin-bottom: 10px;
+			margin-top: 0;
+		}
+
+		.footer h5 {
+			font-size: 10px;
+			margin-bottom: 5px;
+			margin-top: 0;
+			cursor: pointer;
+		}
+
+		.footer pre {
+			margin: 0;
+			font-family: monospace;
+			white-space: pre-wrap;
+		}
+
+		
+		h3 > span, h5 > span {
+		cursor: pointer;
+		}
+
+
+
 	</style>
+	<script>
+	function toggleInfo(id, elem) {
+    var info = document.getElementById(id);
+    var arrow = elem.querySelector('.toggle-arrow');
+    
+    if (info.style.display === "block") {
+        info.style.display = "none";
+        info.style.opacity = 0;
+        arrow.style.transform = "rotate(0deg)";
+    } else {
+        info.style.display = "block";
+        setTimeout(function() {
+            info.style.opacity = 1;
+        }, 50);
+        arrow.style.transform = "rotate(180deg)";
+    }
+}
+
+
+
+
+	</script>
 </head>
 <body>
 	<header>
@@ -61,7 +176,9 @@
 	</header>
 	<div class="container">
 		<h2>Definition</h2>
-		<p>Bright patterns are aspirational design solutions that prioritize ethical considerations over established design conventions. They are design solutions that prioritize user goals and well-being over their desires and business objectives.</p>
+		<p>
+			Bright patterns are aspirational design solutions that prioritize user goals and well-being over their desires and business objectives. These ethical user interfaces may break with established design conventions of 'good' design.
+		</p>
 		
 		<h2>Collection of Bright Patterns</h2>
 		<p>While bright patterns are not commonly found, we have discovered a few instances of these rare designs in the wild. If you have encountered any bright pattern that is not covered by the examples below, please submit it using this form: <a href="https://forms.gle/9ULA8FjcoN5km4EF6">Submit a Bright Pattern</a>.</p>
@@ -69,73 +186,275 @@
 		<h2>Examples</h2>
 
 		<div class="pattern">
-			<h3>Slow down</h3>
-			<p>This pattern involves friction in interaction by adding extra steps or barriers to prevent users from engaging in harmful or addictive behaviors. For example, a social media app may require users to confirm their intention before posting a potentially toxic comment, or an app intentionally takes longer to open up.</p>
+			<h3>
+				<span onclick="toggleInfo('slow-down-info', this)">Slow down
+					<span class="toggle-arrow">&#x25BC;</span>
+				</span>
+			</h3>
+				<p>This pattern involves friction in interaction by adding extra steps or barriers to prevent users from engaging in harmful or addictive behaviors. For example, a social media app may require users to confirm their intention before posting a potentially toxic comment, or an app intentionally takes longer to open up.</p>
+			<div class="additional-info" id="slow-down-info">
+				
+				<img src="https://duet-cdn.vox-cdn.com/thumbor/0x0:1024x694/1080x732/filters:focal(512x347:513x348):format(webp)/cdn.vox-cdn.com/uploads/chorus_asset/file/19533824/EL7WTSvVUAAD8lJ.jpg" alt="Posting a potentially offensive comment will generate a warning that encourages you to edit it. Image: Instagram">
+				<div class="chip">
+					<img src="https://s2.googleusercontent.com/s2/favicons?domain=www.instagram.com" alt="Instagram"><a href="https://www.theverge.com/2019/12/16/21024051/instagram-captions-potentially-offensive-ai-moderation-bullying-edit">Instagram</a>
+				</div>
+				<div class="chip">
+					<img src="https://s2.googleusercontent.com/s2/favicons?domain=https://one-sec.app/" alt="one sec"><a href="https://www.pnas.org/doi/10.1073/pnas.2213114120">one sec</a>
+				</div>
+			</div>
 		</div>
 
-		<div class="pattern">
-			<h3>Escape hatch</h3>
-			<p>Making it easy for users to leave a situation or cancel a subscription. For example, providing a clear and accessible option to cancel membership or delete profile. </p>
-		</div>
+
+
+		<!-- Add the remaining patterns with the same structure as above -->
+
 
 		<div class="pattern">
-			<h3>Simple Consent</h3>
-			<p>This pattern involves obtaining clear and unambiguous consent from the user before collecting, using, or sharing their personal data. This can involve providing clear explanations of how the data will be used and providing easy-to-use options for opting in or out. </p>
+			<h3>
+				<span onclick="toggleInfo('escape-hatch-info', this)">Escape hatch
+					<span class="toggle-arrow">&#x25BC;</span>
+				</span>
+			</h3>
+				<p>Making it easy for users to leave a situation or cancel a subscription. For example, providing a clear and accessible option to cancel membership or delete profile.</p>
+			<div class="additional-info" id="escape-hatch-info">
+				
+				<!-- <img src="https://duet-cdn.vox-cdn.com/thumbor/0x0:1024x694/1080x732/filters:focal(512x347:513x348):format(webp)/cdn.vox-cdn.com/uploads/chorus_asset/file/19533824/EL7WTSvVUAAD8lJ.jpg" alt="Posting a potentially offensive comment will generate a warning that encourages you to edit it. Image: Instagram"> -->
+				<div class="chip">
+					<img src="https://s2.googleusercontent.com/s2/favicons?domain=https://developer.apple.com" alt="Apple Guideline"><a href="https://developer.apple.com/design/human-interface-guidelines/patterns/managing-accounts">Apple Guideline</a>
+				</div>
+				<div class="chip">
+					<img src="https://s2.googleusercontent.com/s2/favicons?domain=https://datatransferproject.dev/" alt="Data Transfer Project"><a href="https://datatransferproject.dev">Data Transfer Project</a>
+				</div>
+			</div>
 		</div>
 
+
 		<div class="pattern">
-			<h3>Honest defaults</h3>
+			<h3>
+				<span onclick="toggleInfo('simple-consent-info', this)">Simple Consent
+					<span class="toggle-arrow">&#x25BC;</span>
+				</span>
+			</h3>
+				<p>This pattern involves obtaining clear and unambiguous consent from the user before collecting, using, or sharing their personal data. This can involve providing clear visual explanation of how the data will be used and providing easy-to-use options for opting in or out. </p>
+			<div class="additional-info" id="simple-consent-info">
+				
+				<!-- <img src="https://duet-cdn.vox-cdn.com/thumbor/0x0:1024x694/1080x732/filters:focal(512x347:513x348):format(webp)/cdn.vox-cdn.com/uploads/chorus_asset/file/19533824/EL7WTSvVUAAD8lJ.jpg" alt="Posting a potentially offensive comment will generate a warning that encourages you to edit it. Image: Instagram"> -->
+				<div class="chip">
+					<img src="https://s2.googleusercontent.com/s2/favicons?domain=econsultancy.com" alt="Apple Guideline"><a href="https://econsultancy.com/best-practice-ux-gdpr-marketing-consent/">UI Guideline</a>
+				</div>
+				<div class="chip">
+					<img src="https://s2.googleusercontent.com/s2/favicons?domain=awwwards.com" alt="Awwwards.com"><a href="https://www.awwwards.com/30-creative-examples-of-cookie-consent-experiences.html">UI Awards</a>
+				</div>
+			</div>
+		</div>
+
+		
+		<div class="pattern">
+			<h3>
+				<span onclick="toggleInfo('honest-default-info', this)">Honest defaults
+					<span class="toggle-arrow">&#x25BC;</span>
+				</span>
+			</h3>
 			<p> This pattern involves setting default options that are in the best interest of the user, rather than the business. For example, a default option to unsubscribe from marketing emails may be provided, rather than requiring users to opt-out.</p>
+			<div class="additional-info" id="honest-default-info">
+				<div class="chip">
+					<img src="https://s2.googleusercontent.com/s2/favicons?domain=ui-patterns.com" alt="Consumer Reports"><a href="https://ui-patterns.com/patterns/GoodDefaults">Good defaults</a>
+				</div>
+			</div>
 		</div>
 
 		<div class="pattern">
-			<h3>Nutrition labels</h3>
-			<p>The nutrition label pattern is a design element that provides users with clear and transparent information about the impact of a particular action or decision. For example, a food delivery app may show users the nutritional information of each dish they order, such as calories, fat, sugar etc., or a travel booking app may show users the environmental impact of each flight they book, such as carbon emissions etc..</p>
+			<h3>
+				<span onclick="toggleInfo('nutrition-info', this)">Nutrition labels
+					<span class="toggle-arrow">&#x25BC;</span>
+				</span>
+			</h3>
+			<p>The nutrition label  is a design element that provides users with clear and transparent overview about the content or impact of a particular action or decision. These are becoming common in AI dataset documentation.</p>
+			<div class="additional-info" id="nutrition-info">
+				<img src="https://digital-lab.consumerreports.org/wp-content/uploads/2021/03/taxbills-screenshot-1024x818.png" alt="Nutrition label of dataset. Image: Consumer Reports">
+				<div class="chip">
+					<img src="https://s2.googleusercontent.com/s2/favicons?domain=digital-lab.consumerreports.org" alt="Consumer Reports"><a href="https://digital-lab.consumerreports.org/data-nutrition-project/">Consumer Reports</a>
+				</div>
+			</div>
 		</div>
+
 		<div class="pattern">
-			<h3>Persona profiling</h3>
+			<h3>
+				<span onclick="toggleInfo('persona-profiling-info', this)">Persona profiling
+					<span class="toggle-arrow">&#x25BC;</span>
+				</span>
+			</h3>
 			<p>The app or website transparently informs users of the categories or groups they are being placed into based on their data, allowing them to better understand how they are being profiled and how their experience may differ from other users.</p>
+			<div class="additional-info" id="persona-profiling-info">
+				<img src="https://i0.wp.com/9to5google.com/wp-content/uploads/sites/4/2022/10/Google-My-Ad-Center-Hub-cover.jpeg?w=2000&quality=82&strip=all&ssl=1" alt="Google Ads settings. Image: 9to5google.com">
+				<div class="chip">
+					<img src="https://s2.googleusercontent.com/s2/favicons?domain=myadcenter.google.com" alt="My Ads Google"><a href="https://www.theverge.com/2019/12/16/21024051/instagram-captions-potentially-offensive-ai-moderation-bullying-edit">My Ads Google</a>
+				</div>
+			</div>	
 		</div>
+
 		<div class="pattern">
-			<h3>Healthy alternative/5-a-day</h3>
+			<h3>
+				<span onclick="toggleInfo('healthy-alternative-info', this)">Healthy alternative/5-a-day
+					<span class="toggle-arrow">&#x25BC;</span>
+				</span>
+			</h3>
 			<p>The platform suggests higher quality content, still of interest to the user, but may discourage mindless usage. This pattern respects the user’s well-being and attention, and does not try to exploit their curiosity or boredom into consuming more content than they need or want. For example, a social media app may suggest users to watch educational videos or read informative articles instead of scrolling through endless feeds of memes or gossip, or a gaming app may suggest users to play games that are more challenging or rewarding instead of games that are more addictive or repetitive.</p>
+			<div class="additional-info" id="healthy-alternative-info">
+					<div class="chip">
+						<img src="img\newspaper-regular.svg" alt="Article"><a href="https://www.bigtechnology.com/p/five-ways-china-is-trying-to-unaddict">Article</a>
+					</div>
+			</div>
 		</div>
+
 		<div class="pattern">
-			<h3>Usage limits</h3>
+			<h3>
+				<span onclick="toggleInfo('usage-info', this)">Usage limits
+					<span class="toggle-arrow">&#x25BC;</span>
+				</span>
+			</h3>
 			<p>Often implemented in external well-being and child control apps, these are patterns within apps that limit usage time to healthy levels.</p>
+			<div class="additional-info" id="usage-info">
+				<img src="https://famisafe.wondershare.com/images/article/2020/03/parental-control-for-WOW-2.jpg" alt="Usage time limit settings. Image: World of Warcraft">
+				<div class="chip">
+					<img src="https://s2.googleusercontent.com/s2/favicons?domain=worldofwarcraft.blizzard.com" alt="WoW"><a href="https://www.bbc.com/news/technology-58625934">World of Warcraft</a>
+				</div>
+				<div class="chip">
+					<img src="https://s2.googleusercontent.com/s2/favicons?domain=www.douyin.com" alt="Douyin"><a href="https://www.bbc.com/news/technology-58625934">Douyin</a>
+				</div>
+
+
+
+			</div>
 		</div>
+
 		<div class="pattern">
-			<h3>Transparent recommender</h3>
+			<h3>
+				<span onclick="toggleInfo('transparent-recommender-info', this)">Transparent recommender
+					<span class="toggle-arrow">&#x25BC;</span>
+				</span>
+			</h3>
 			<p>This pattern involves revealing the logic or criteria behind the recommendations or suggestions that are provided to the user. For example, a streaming service may explain why a certain show or movie is recommended based on the user’s preferences, ratings, or viewing history, or an e-commerce site may disclose how sponsored products are ranked or selected.</p>
+			<div class="additional-info" id="transparent-recommender-info">
+				<img src="https://scx1.b-cdn.net/csz/news/800a/2021/consumers-make-decisio.jpg" alt="Explaining recommendeds reasoning. Image: phys.org">
+				<div class="chip">
+					<img src="https://s2.googleusercontent.com/s2/favicons?domain=www.salesforce.com" alt="Salesforce"><a href="https://www.salesforce.com/resources/articles/what-is-product-recommendation-engine/">Salesforce</a>
+				</div>
+				<div class="chip">
+					<img src="img\file-lines-solid.svg" alt="Pennstate"><a href="https://www.tandfonline.com/doi/full/10.1080/00913367.2021.1887013">Research Paper</a>
+				</div>
+			</div>
 		</div>
+
 		<div class="pattern">
-			<h3>Dumb it down</h3>
+			<h3>
+				<span onclick="toggleInfo('dumb-info', this)">Dumb it down
+					<span class="toggle-arrow">&#x25BC;</span>
+				</span>
+			</h3>
 			<p>This pattern involves providing users with clear and understandable explanations of how their data is processed or used by an AI system. These explanations can be visual, personalized, and even counterfactual. For example, a health app may visually show how it calculates the user's risk of developing a certain condition based on their data, or a credit-scoring system may provide a personalized explanation of how it determines the user's creditworthiness based on their data.</p>
+			<div class="additional-info" id="dumb-info">
+				<img src="/img/pair_idea.png" alt="Simple Explanation. Image: Google Pair">
+				<div class="chip">
+					<img src="https://s2.googleusercontent.com/s2/favicons?domain=www.pair.withgoogle.com/.com" alt="Pair Google"><a href="https://pair.withgoogle.com/guidebook/patterns">Pair Google</a>
+				</div>
+			</div>
 		</div>
+
 		<div class="pattern">
-			<h3>Data traces</h3>
+			<h3>
+				<span onclick="toggleInfo('data-info', this)">Data traces
+					<span class="toggle-arrow">&#x25BC;</span>
+				</span>
+			</h3>
 			<p>This pattern involves showing users the traces or records of their data that are stored, shared, or accessed by an app or website. For example, a messaging app may show users when their messages are read, forwarded, or deleted by others, or a search engine may show users their search history and how it affects their results.</p>
+			<div class="additional-info" id="data-info">
+				<img src="https://www.looper.com/img/gallery/google-ad-settings-personalization-editing-privacy/google-ad-settings-personalization-1.webp" alt="Google Ads Personalization. Image: slashgear">
+				<div class="chip">
+					<img src="https://s2.googleusercontent.com/s2/favicons?domain=www.ads.google.com" alt="Google Ads"><a href="https://www.slashgear.com/809542/heres-how-to-find-out-what-googles-adverts-know-about-you/">Google Ads</a>
+				</div>
+				<div class="chip">
+					<img src="https://s2.googleusercontent.com/s2/favicons?domain=https://adnauseam.io/" alt="adnauseam"><a href="https://www.adnauseam.io">Adnauseam</a>
+				</div>
+			</div>
 		</div>
+
 		<div class="pattern">
-			<h3>Cost transparency</h3>
+			<h3>
+				<span onclick="toggleInfo('cost-info', this)">Cost transparency
+					<span class="toggle-arrow">&#x25BC;</span>
+				</span>
+			</h3>
 			<p>This pattern involves showing users the detailed breakdown of the costs involved in producing and selling a product or service. This pattern respects the user’s curiosity and trust, and does not try to hide or inflate the margins or profits of the vendor. For example, showing users how much the product cost in purchase, marketing, return and shipping.</p>
+			<div class="additional-info" id="cost-info">
+			<img src="img/airbnb.png" alt="Airbnb full price.  Image: Airbnb">
+			<div class="chip">
+				<img src="https://s2.googleusercontent.com/s2/favicons?domain=www.airbnb.com" alt="Airbnb"><a href="https://news.airbnb.com/airbnb-is-introducing-total-price-display-and-updating-guest-checkout/">Airbnb</a>
+				</div>
+		
+			</div>
 		</div>
+
 		<div class="pattern">
-			<h3>Outside my bubble</h3>
+			<h3>
+				<span onclick="toggleInfo('bubble-info', this)">Outside my bubble
+					<span class="toggle-arrow">&#x25BC;</span>
+				</span>
+			</h3>
 			<p>This pattern involves exposing users to different perspectives or opinions frequently that challenge their existing beliefs or preferences. For example, a news aggregator may show users articles from diverse sources or a music streaming service may suggest songs from genres that they usually don’t listen to.</p>
+			<div class="additional-info" id="bubble-info">
+				<img src="/img/buuzfeed_bubble.png" alt="Buzzfeeds outside your bubble feature. Image: Buzzfeed">
+				<div class="chip">
+					<img src="https://s2.googleusercontent.com/s2/favicons?domain=www.buzzfeed.com" alt="Buzzfeed"><a href="https://www.buzzfeed.com/bensmith/helping-you-see-outside-your-bubble">Buzzfeed</a>
+				</div>
+			</div>
 		</div>
+
 		<div class="pattern">
-			<h3>Contrarian’s companion</h3>
+			<h3>
+				<span onclick="toggleInfo('contrarian-info', this)">Contrarian’s companion
+					<span class="toggle-arrow">&#x25BC;</span>
+				</span>
+			</h3>
 			<p>This pattern provides critique on consumed and posted content. For example, it shows, views with different political leanings than theirs, and makes users reflect on their opinions.</p>
+			<div class="additional-info" id="contrarian-info">
+	
+				<div class="chip">
+					<img src="https://s2.googleusercontent.com/s2/favicons?domain=www.facebook.com" alt="Facebook"><a href="https://nypost.com/2021/07/02/facebooks-new-extremism-warning-causes-concern-among-conservatives/">Facebook</a>
+				</div>
+				
+			</div>
 		</div>
+
+
+
+
+		<footer class="footer">
+			<!-- <h2>About</h2> -->
+			<section id="author">
+				<p class="author">By Hauke Sandhaus, Cornell University, NYC ©️2023</p>
+			</section>
+			<h5>
+				<span onclick="toggleInfo('citation-info', this)">Citation
+					<span class="toggle-arrow">&#x25BC;</span>
+				</span>
+			</h5>
+			
+		
+			<div class="additional-info" id="citation-info">
+<pre>
+@MISC{brightpatterns2023,
+title={Bright Patterns},
+author={Sandhaus, Hauke},
+year={2023},
+institution={Cornell University},
+address={Brooklyn, New York City},
+url={https://www.brightpatterns.org}
+}</pre>
+			</div>
+<br><a style="background-color: transparent" href="https://haukesand.github.io/">🛖</a><br>
+		</footer>
 		
 		
-		
-
-
-
-		<section id="author">
-			<p class="author">By Hauke Sandhaus, Cornell University, NYC ©️2023</p>
-		</section>
-
 </body>
+</html>
